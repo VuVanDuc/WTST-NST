@@ -1,12 +1,10 @@
-import pywt
 from scipy.io import wavfile
 import numpy as np
-import pyyawt
 
-fs, data = wavfile.read('input.wav')
-maxlev = pywt.dwt_max_level(len(data), pywt.Wavelet('db2').dec_len)
-coeffs = pyyawt.dwt1d.wavedec(data, maxlev, 'db2')
-datarec = pywt.waverec(coeffs, 'db2')
-datare = np.asarray(datarec, dtype=np.int16)
-wavfile.write('output.wav', fs, datare)
-
+fs, data = wavfile.read('input1.wav')
+fs1, data1 = wavfile.read('output1.wav')
+fs3, data3 = wavfile.read("D:\\do an\\KalmanFilter\\cough(63)1.wav")
+kq = np.linalg.norm(data-data3)
+kq1 = np.linalg.norm(data1-data3)
+print(str(kq))
+print(str(kq1))
